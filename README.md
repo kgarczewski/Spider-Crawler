@@ -6,14 +6,15 @@ Script provides user with detailed data about every link including site title, q
 Installation
 
     Clone this repository to local folder
-    Open project with python
+    Open folder in terminal
+    Go to crawler_v2 folder (cd crawler_v2)
     Run pip install -r requirements.txt
 
 Use the app
 
     Run the script with following code: scrapy crawl crawler -o output.<specify output format (csv/json)>
     Enter a website url which you want to check in following format: abc.xyz
-    Check created output in selected format
+    After script is finished You can check the output with command: cat output.json
     
   
 
