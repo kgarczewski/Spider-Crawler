@@ -12,7 +12,8 @@ Installation
 Use the app
 
     Run the script with following code: scrapy crawl 'crawler' -o output.<specify output format (csv/json)>
-    Enter a website which you want to check in following format: abc.xyz
+    Enter a website url which you want to check in following format: abc.xyz
+    Check created output in selected format
     
   
 
