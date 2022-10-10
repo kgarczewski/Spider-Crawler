@@ -1,12 +1,16 @@
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
+import re
 
 
 class QuotesSpider(CrawlSpider):
     name = "crawler"
     allowed_domains = [str(input('enter the website address in following format abc.xyz: '))]
     start_urls = [f'https://{allowed_domains[0]}']
-
+    valid_links = re.findall('https://[a-z0-9_.\-]+\.[a-z0-9_\-/]+', start_urls[0])
+    # Input validation
+    if len(valid_links) == 0:
+        raise Exception("Please enter valid website in following format abc.xyz")
     rules = (
         Rule(LinkExtractor(), callback='parse_item', follow=True),
     )
