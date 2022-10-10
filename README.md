@@ -14,7 +14,7 @@ Use the app
 
     Run the script with following code: scrapy crawl crawler -o output.<specify output format (csv/json)>
     Enter a website url which you want to check in following format: abc.xyz
-    After script is finished You can check the output with command: cat output.json
+    After script is finished You can check the output with command: cat output.json or just find and open file output in crawler_v2 folder.
     
   
 
