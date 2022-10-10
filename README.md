@@ -11,7 +11,7 @@ Installation
 
 Use the app
 
-    Run the script with following code: scrapy crawl 'crawler' -o output.<choose output format (csv/json)>
+    Run the script with following code: scrapy crawl 'crawler' -o output.<specify output format (csv/json)>
     Enter a website which you want to check in following format: abc.xyz
     
   
