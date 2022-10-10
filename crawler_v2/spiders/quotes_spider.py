@@ -4,8 +4,9 @@ from scrapy.linkextractors import LinkExtractor
 
 class QuotesSpider(CrawlSpider):
     name = "crawler"
-    allowed_domains = [str(input('enter the website address in pattern abc.xyz:'))]
+    allowed_domains = [str(input('enter the website address in following format abc.xyz: '))]
     start_urls = [f'https://{allowed_domains[0]}']
+
     rules = (
         Rule(LinkExtractor(), callback='parse_item', follow=True),
     )
@@ -17,10 +18,12 @@ class QuotesSpider(CrawlSpider):
         titles = []
         href_ = response.request.url
         title = response.css('title::text').get()
+        # Scrapping all the links from a href tag
         for href in response.css('a::attr(href)'):
             link = href.extract()
             if self.start_urls[0] in href_:
                 if href_ + link not in links_:
+                    # Checking for externals links
                     if link.split(':')[0] in ['http', 'https']:
                         links_.append(href_ + link)
                         titles.append(title)
@@ -37,6 +40,7 @@ class QuotesSpider(CrawlSpider):
                     'internal links count': len(internals),
                     'external links count': len(externals)
                                 }
+        # Handle url without links
         elif len(links_) == 0:
             if self.start_urls[0] in href_:
                 if href_.split(':')[0] != 'http':
